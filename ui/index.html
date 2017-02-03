@@ -16,5 +16,18 @@
         </script>
         <script type="text/javascript" src="/ui/main.js">
         </script>
+        var hash = 'fe95881a7eec7553217cf714ce214df1ab4b9559028e5eac066743e455a6ae81';
+var winningNumber = 5;
+var secret = 'hu2qnrxo4Az1cjkaRLJu';
+var shaObj = new jsSHA("SHA-256", "TEXT");
+shaObj.setHMACKey(secret, "TEXT");
+shaObj.update(winningNumber.toString());
+if (hash === shaObj.getHMAC("HEX")) {
+    console.log('Hash does match!');
+    notify('success', 'Hash does match!');
+} else {
+    console.log('Hash doesn\'t match!');
+    notify('error', 'Hash doesn\'t match!');
+}
     </body>
 </html>
